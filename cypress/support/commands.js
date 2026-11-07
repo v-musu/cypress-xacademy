@@ -30,3 +30,12 @@ Cypress.Commands.add('ingreso', (usuario, contrasenia)=> {
     cy.get('[data-test="password"]').type(contrasenia)
     cy.get('[data-test="login-submit"]').click()
 })
+
+Cypress.Commands.add('navegacionSignIn', ()=>{
+    cy.get('[data-test="nav-sign-in"]').click()
+})
+
+Cypress.Commands.add('navegacionForgotPassword', ()=>{
+    cy.get('[data-test="nav-sign-in"]').click()
+    cy.get('[data-test="forgot-password-link"]').click()
+})
