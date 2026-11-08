@@ -1,0 +1,9 @@
+{
+    "address": "Prueba Cypress 123",
+    "city": "Rosario",
+    "state": "Santa Fe",
+    "country": "Argentina",
+    "postcode": "11113",
+    "name": "Usuario Test",
+    "accountNumber": "010101"
+}

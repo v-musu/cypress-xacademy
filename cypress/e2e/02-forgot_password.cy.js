@@ -23,4 +23,16 @@ describe('recupero de contrasenia', ()=> {
             })
         })
     })
-})
+
+ /*
+    it('recupero con email no registrado', ()=> {
+        cy.navegacionForgotPassword()
+        cy.fixture('users').then((data) => {
+            const email = data.not_register_user
+            cy.get('[data-test="email"]').type(email)
+            cy.get('[data-test="forgot-password-submit"]').click()
+
+        })
+    }) */
+   
+}) 
