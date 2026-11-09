@@ -1,0 +1,32 @@
+
+{
+  "firstNames": [
+    "Stefany",
+    "Laura",
+    "Camila",
+    "Daniela",
+    "Valentina",
+    "Mariana"
+  ],
+  "lastNames": [
+    "Mendoza",
+    "Torres",
+    "Ramirez",
+    "Gomez",
+    "Castro",
+    "Lopez"
+  ],
+  "dateOfBirth": "1995-05-15",
+  "address": "Calle 123 # 45-67",
+  "postcode": "170001",
+  "cities": [
+    "Manizales",
+    "Pereira",
+    "Armenia",
+    "Bogota"
+  ],
+  "country": "CO",
+  "state": "Caldas",
+  "phone": "3001234567",
+  "password": "TestUser2026!"
+}
