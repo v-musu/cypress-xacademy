@@ -4,6 +4,7 @@ describe('login', ()=> {
     })
 
     it('ingreso válido', ()=> {
+        cy.navegacionSignIn()
         cy.fixture('users').then((data)=> {
             const usuario = data.user_customer_1
             const contrasenia = data.user_password
@@ -14,6 +15,7 @@ describe('login', ()=> {
     })
 
     it('ingreso con contraseña incorrecta', ()=> {
+        cy.navegacionSignIn()
         cy.fixture('users').then((data)=>{
             const usuario = data.user_customer_1
             const contrasenia = data.incorrect_password

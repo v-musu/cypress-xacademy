@@ -27,5 +27,5 @@ describe('compra completa', ()=> {
         })
         cy.get('.help-block').should('be.visible')
         .and('contain', 'invoice number')
-        .and((cy.get('[data-test="cart-quantity"]').should('not.be.visible')))
+        cy.get('[data-test="nav-cart"]').should('not.be.visible')
     })})
