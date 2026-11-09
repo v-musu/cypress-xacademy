@@ -113,4 +113,105 @@ it('FORM-REG-03 - No permite registrar un usuario con correo electrónico invál
   .and('contain', 'E-mail format is invalid.');
 });
 
+
+it('FORM-REG-04 - No permite registrar un usuario con fecha de nacimiento futura', () => {
+
+    cy.openRegistrationForm();
+
+    const fechaFutura = new Date();
+    fechaFutura.setDate(fechaFutura.getDate() + 1);
+
+    const fechaFormateada = [
+        fechaFutura.getFullYear(),
+        String(fechaFutura.getMonth() + 1).padStart(2, '0'),
+        String(fechaFutura.getDate()).padStart(2, '0')
+    ].join('-');
+    
+    const email = `user${Date.now()}@test.com`;
+
+    cy.createTestUser({
+        dateOfBirth: fechaFormateada,
+        email: email
+    }).then((newUser) => {
+
+        cy.fillRegistrationForm(newUser);
+
+        cy.get('[data-test="register-submit"]')
+          .scrollIntoView()
+          .should('be.visible')
+          .click();
+
+        cy.url().should('include', '/auth/register');
+
+        cy.get('[data-test="register-error"]')
+        .should('be.visible')
+        .and('contain', 'Customer must be 18 years old.');
+
+    });
+
+});
+    
+it('FORM-REG-05 - Permite un carácter en nombre y apellido, pero rechaza un teléfono de 25 dígitos', () => {
+
+    cy.openRegistrationForm();
+    const email = `user${Date.now()}@test.com`;
+
+    cy.createTestUser({
+        firstName: 'A',
+        lastName: 'B',
+        phone: '1234567890123456789012345',
+        email: email
+    }).then((newUser) => {
+
+        cy.fillRegistrationForm(newUser);
+
+        cy.get('[data-test="register-submit"]')
+          .scrollIntoView()
+          .should('be.visible')
+          .click();
+
+        cy.url().should('include', '/auth/register');
+
+        cy.get('[data-test="register-error"]')
+        .should('be.visible')
+        .and('contain', 'The phone field must not be greater than 24 characters.');
+
+    
+    });
+
+});
+   
+it.only('FORM-REG-06 - Permite registrar un usuario con exactamente 18 años cumplidos', () => {
+
+    cy.openRegistrationForm();
+    const email = `user${Date.now()}@test.com`;
+
+    const fechaNacimiento = new Date();
+    fechaNacimiento.setFullYear(fechaNacimiento.getFullYear() - 18);
+
+    const fechaFormateada = [
+        fechaNacimiento.getFullYear(),
+        String(fechaNacimiento.getMonth() + 1).padStart(2, '0'),
+        String(fechaNacimiento.getDate()).padStart(2, '0')
+    ].join('-');
+
+    cy.createTestUser({
+        dateOfBirth: fechaFormateada,
+        email:email
+    }).then((newUser) => {
+
+        cy.fillRegistrationForm(newUser);
+
+        cy.get('[data-test="register-submit"]')
+          .scrollIntoView()
+          .should('be.visible')
+          .click();
+
+        cy.url().should('include', '/auth/login');    
+
+
+    });
+
+});
+
 });
