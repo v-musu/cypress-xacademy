@@ -65,3 +65,31 @@ Cypress.Commands.add('fillRegistrationForm', (user) => {
 
 });
 
+
+Cypress.Commands.add('createTestUser', (overrides = {}) => {
+
+    return cy.fixture('register-user').then((user) => {
+
+        const randomItem = (array) => {
+            return array[Math.floor(Math.random() * array.length)];
+        };
+
+        const newUser = {
+            firstName: randomItem(user.firstNames),
+            lastName: randomItem(user.lastNames),
+            dateOfBirth: user.dateOfBirth,
+            address: user.address,
+            postcode: user.postcode,
+            city: randomItem(user.cities),
+            country: user.country,
+            state: user.state,
+            phone: user.phone,
+            email: user.email,
+            password: user.password,
+            ...overrides
+        };
+
+        return newUser;
+    });
+
+});
