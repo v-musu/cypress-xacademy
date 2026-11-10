@@ -17,3 +17,4 @@
 import './commands/login'
 import './commands/navegacion'
 import './commands/checkout_de_compra'
+import './commands/carrito'
