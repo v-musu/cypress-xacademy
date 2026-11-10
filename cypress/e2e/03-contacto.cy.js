@@ -55,7 +55,7 @@ describe('Formulario de contacto', () => {
 
   });
 
-  it.only('FORM-CON-04 - No permite enviar un correo inválido', () => {
+  it('FORM-CON-04 - No permite enviar un correo inválido', () => {
     cy.openContactForm();
         
     cy.url().should('include', '/contact');
