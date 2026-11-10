@@ -93,3 +93,43 @@ Cypress.Commands.add('createTestUser', (overrides = {}) => {
     });
 
 });
+
+Cypress.Commands.add('openContactForm', () => {
+  cy.visit('/');
+  cy.get('[data-test="nav-contact"]').click();
+  cy.url().should('include', '/contact');
+
+});
+
+Cypress.Commands.add('fillContactForm', (contact) => {
+  cy.get('[data-test="first-name"]')
+  .should('be.visible')
+  .type(contact.firstName);
+
+  cy.get('[data-test="last-name"]')
+  .should('be.visible')
+  .type(contact.lastName);
+
+  cy.get('[data-test="email"]')
+  .should('be.visible')
+  .type(contact.email);
+
+  cy.get('[data-test="subject"]')
+  .should('be.visible')
+  .select(contact.subject);
+
+  cy.get('[data-test="message"]')
+  .should('be.visible')
+  .type(contact.message);
+
+
+});
+
+Cypress.Commands.add('submitContactForm', () => {
+  cy.get('[data-test="contact-submit"]')
+  .scrollIntoView()
+  .should('be.visible')
+  .should('be.enabled')
+  .click()
+  
+});
