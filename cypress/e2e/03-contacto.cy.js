@@ -64,11 +64,46 @@ describe('Formulario de contacto', () => {
      contact.email = 'correo_invalido.com';
      cy.fillContactForm(contact);
      cy.submitContactForm();
-
     });
+
     cy.get('[data-test="email-error"]')
     .should('be.visible')
     .and('contain', 'E-mail format is invalid.');
+
+  });
+
+  it('FORM-CON-05 - Prueba longitud de 251 caracteres', () => {
+    cy.openContactForm();
+
+    cy.fixture('contact-data').then((contact) => {
+
+        contact.message = 'A'.repeat(5000);
+
+        cy.fillContactForm(contact);
+
+        cy.get('[data-test="message"]')
+            .invoke('val')
+            .should('have.length', 5000);
+
+        cy.submitContactForm();
+        cy.contains('.help-block', 'The message field must not be greater than 250 characters.')
+        .should('be.visible');
+
+    });
+  });
+
+  it('FORM-CON-06 - Adjuntar un archivo que supere el límite de tamaño', () => {
+    cy.openContactForm();
+    cy.fixture('contact-data').then((contact) => {
+
+        cy.fillContactForm(contact);
+        cy.get('[data-test="attachment"]')
+        .selectFile('cypress/fixtures/files/archivo-prueba-504.txt');
+        cy.submitContactForm();
+        
+    });
+
+    cy.get('.alert-danger').should('be.visible');
 
   });
     
