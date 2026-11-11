@@ -14,4 +14,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands/login'
+import './commands/navegacion'
+import './commands/checkout_de_compra'
+import './commands/carrito'
+import './commands/registro_contacto'

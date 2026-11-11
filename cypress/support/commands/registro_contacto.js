@@ -1,4 +1,3 @@
-
 Cypress.Commands.add('openRegistrationForm', () => {
   cy.visit('/');
   cy.contains('Sign in').click();
