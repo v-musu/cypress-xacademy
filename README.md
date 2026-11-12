@@ -9,7 +9,7 @@ Este repositorio aloja el proyecto challenge del curso XAcademy QA automation. J
 | -- | -- | -- |
 | Stefany Montaño | smontano13 | tefis0531@gmail.com |
 | Victoria Musura | v-musu | victoriamusura1@gmail.com |
-| Talia Vela | tvsierpes | talia.vela@arbusta.net |
+
 
 ### Documentación testing
 
