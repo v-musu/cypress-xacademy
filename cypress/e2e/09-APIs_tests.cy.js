@@ -1,5 +1,5 @@
 describe('API', () => {
-    it('Consultar el listado de productos', () => {
+    it('API-01 - Consultar el listado de productos', () => {
         cy.request({
             method: 'GET',
             url: `${Cypress.expose('urlApi')}/products`
@@ -9,7 +9,7 @@ describe('API', () => {
         })
     })
 
-    it('Ingresar vía API y generar un token', () => {
+    it('API-02 - Ingresar vía API y generar un token', () => {
         cy.fixture('users').then((usuarios) => {
             cy.request({
                 method: 'POST',

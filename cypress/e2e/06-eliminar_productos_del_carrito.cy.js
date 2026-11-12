@@ -1,7 +1,7 @@
 import { selectores, textoANumero } from '../support/selectores'
 
 describe('Carrito - eliminar productos', () => {
-  context('Carrito con 2 o más productos', () => {
+  context('CART-01 - Carrito con 2 o más productos', () => {
     beforeEach(() => {
       cy.visit('https://with-bugs.practicesoftwaretesting.com/')
       cy.addToCart(1)
@@ -43,7 +43,7 @@ describe('Carrito - eliminar productos', () => {
     })
   })
 
-  context('Carrito con un único producto', () => {
+  context('CART-02 - Carrito con un único producto', () => {
     beforeEach(() => {
       cy.visit('https://with-bugs.practicesoftwaretesting.com/')
       cy.addToCart(1)

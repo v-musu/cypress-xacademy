@@ -3,7 +3,7 @@ describe('login', ()=> {
         cy.visit('https://with-bugs.practicesoftwaretesting.com/')
     })
 
-    it('ingreso válido', ()=> {
+    it('LOG-01 - ingreso válido', ()=> {
         cy.navegacionSignIn()
         cy.fixture('users').then((data)=> {
             const usuario = data.user_customer_1
@@ -14,7 +14,7 @@ describe('login', ()=> {
         })
     })
 
-    it('ingreso con contraseña incorrecta', ()=> {
+    it('LOG-02 - ingreso con contraseña incorrecta', ()=> {
         cy.navegacionSignIn()
         cy.fixture('users').then((data)=>{
             const usuario = data.user_customer_1
@@ -25,7 +25,7 @@ describe('login', ()=> {
         })
     })
 
-    it('ingreso sin credenciales', ()=> {
+    it('LOG-03 - ingreso sin credenciales', ()=> {
         cy.navegacionSignIn()
         cy.get('[data-test="login-submit"]').click()
         cy.get('[data-test="login-error"]').should('be.visible')

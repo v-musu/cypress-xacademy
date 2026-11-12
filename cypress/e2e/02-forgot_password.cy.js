@@ -3,7 +3,7 @@ describe('recupero de contrasenia', ()=> {
         cy.visit('https://with-bugs.practicesoftwaretesting.com/')
     })
 
-    it('recupero con email registrado', ()=> {
+    it('FOR-PASS-01 - recupero con email registrado', ()=> {
         cy.navegacionForgotPassword()
         cy.fixture('users').then((data)=> {
             const email = data.user_customer_2
@@ -25,7 +25,7 @@ describe('recupero de contrasenia', ()=> {
     })
 
  
-    it('recupero con email no registrado', ()=> {
+    it('FOR-PASS-02 - recupero con email no registrado', ()=> {
         cy.navegacionForgotPassword()
         cy.fixture('users').then((data) => {
             const email = data.not_register_user

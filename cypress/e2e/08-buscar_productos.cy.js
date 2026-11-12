@@ -5,7 +5,7 @@ describe('buscar un producto', ()=> {
         cy.visit('https://with-bugs.practicesoftwaretesting.com/')
     })
 
-    it('Realizar una búsqueda válida de producto', () => {
+    it('SEARCH-01 - Realizar una búsqueda válida de producto', () => {
     let producto = "Pliers"
 
     cy.intercept('GET', '**/products/search*').as('busqueda')
@@ -21,7 +21,7 @@ describe('buscar un producto', ()=> {
         })
     })
 
-    it('Realizar una búsqueda sin resultados', ()=> {
+    it('SEARCH-02 - Realizar una búsqueda sin resultados', ()=> {
         let producto = "abc"
 
         cy.intercept('GET', '**/products/search*').as('busqueda')

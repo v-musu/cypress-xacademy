@@ -3,7 +3,7 @@ describe('compra completa', ()=> {
         cy.visit('https://with-bugs.practicesoftwaretesting.com/')
         })
 
-    it('compra exitosa', ()=> {
+    it('CHECKOUT-01 - compra exitosa', ()=> {
         cy.addToCart(1)
         cy.home()
         cy.addToCart(5)
