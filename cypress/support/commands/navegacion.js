@@ -10,3 +10,8 @@ Cypress.Commands.add('navegacionForgotPassword', ()=>{
     cy.get('[data-test="nav-sign-in"]').click()
     cy.get('[data-test="forgot-password-link"]').click()
 })
+
+Cypress.Commands.add('buscarProducto', (producto)=> {
+    cy.get('[data-test="search-query"]').type(producto)
+    cy.get('[data-test="search-submit"]').click()
+})
